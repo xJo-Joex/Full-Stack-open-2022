@@ -1,0 +1,28 @@
+title new note
+
+note over browser:
+When the button on the form is clicked, 
+the browser will send the user input to the server
+end note
+
+browser->server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note
+server--> browser: Server responds with HTTP status code 302 and send in the header's Location - the address notes for that browser reload the page
+browser->server: HTTP GET  https://studies.cs.helsinki.fi/exampleapp/notes
+server-->browser: HTML-CODE
+
+note over browser: 
+The reload causes three more HTTP requests: 
+fetching the style sheet (main.css), 
+the JavaScript code (main.js)
+and the raw data of the notes (data.json)
+end note
+
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+server-->browser:Server responds with the main.css
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.js
+server-->browser: Server respondes with the main.js
+
+note over server: 
+The server creates a new note object, 
+and adds it to an array called notes.
+end note

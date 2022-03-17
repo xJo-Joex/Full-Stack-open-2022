@@ -1,0 +1,23 @@
+title new note
+
+note over browser:
+When you now create a new note, you'll notice 
+that the browser sends only one request to the server
+end note
+
+note over browser:
+The POST request to the address new_note_spa contains
+{
+  content: "single page app does not reload the whole page",
+  date: "2019-05-25T15:15:59.905Z"
+}
+end note
+
+browser->server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+server--> browser: Server responds with HTTP status code 201
+
+note over server:
+ This time the server does not ask for a redirect, 
+ the browser stays on the same page, 
+ and it sends no further HTTP requests.
+end note
